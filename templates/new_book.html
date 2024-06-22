@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create New book</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/static/newbook.css">
+    </head>
+    <body>
+        <div class = 'main'>
+            <div class="new_book_form">
+                {% if book %}
+                    <h3>
+                        Edit Book
+                    </h3>
+                    <form action="/editbook/{{book.id}}/" method="post" enctype="multipart/form-data">
+                {% else %}    
+                    <h3>
+                        Add New Book
+                    </h3>
+                    <form action="/create/newbook/" method="post" enctype="multipart/form-data">
+                {% endif %}
+                    <div class="book_name">
+                        <label for="statictext1" class="col-sm-2 col-form-label">Book Name:</label>
+                        <input type="text" class="form-control" id="statictext1" name="book_name" {% if book %} value="{{book.name}}"{% endif %} required>
+                    </div>
+                    <div class="author_name">
+                        <label for="statictext3" class="col-sm-2 col-form-label">Author Name:</label>
+                        <input type="text" class="form-control" id="statictext3" name="author_name" {% if book %} value="{{book.author_name}}"{% endif %} required>
+                    </div>
+                    <div class="sec_name">
+                        <label for="statictext4" class="col-sm-2 col-form-label">Section Name:</label>
+                        <input type="text" class="form-control" id="statictext4" name="sec_name" {% if book %} value="{{section.sec_name}}"{% endif %} required>
+                    </div>
+                    <div class="sec_description">
+                        <label for="statictext5" class="col-sm-2 col-form-label">Section Description:</label>
+                        <input type="text" class="form-control" id="statictext5" name="sec_description" {% if book %} value="{{section.sec_description}}"{% endif %}>
+                    </div>
+                    <div class="pdf_file">
+                        <label for="pdf_file" class="col-sm-2 col-form-label">Upload PDF:</label>
+                        <input type="file" id="pdf_file" name="pdf_file" class="form-control" accept=".pdf" title="Upload Book PDF" {% if not book %} required {% endif %}>
+                    </div>
+                    <div class="pdf_file">
+                        <label for="thumbnail_file" class="col-sm-2 col-form-label">Upload Thumbnail:</label>
+                        <input type="file" id="thumbnail_file" name="thumbnail_file" class="form-control" accept=".png" title="Upload Book Thumbnail" {% if not book %} required {% endif %}>
+                    </div>
+                    <div class="col-auto" id="submit_button">
+                        <button type="submit" class="btn btn-outline-primary">{% if book %}Update{% else %}Add PDF{% endif %}</button>    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

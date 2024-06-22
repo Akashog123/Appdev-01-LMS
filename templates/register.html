@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/register.css">
+</head>
+<body>
+    <div class = 'main'>
+        <div class="login_form">
+            <h3>
+                Welcome to LMS!
+            </h3>
+            <form action="/register" method="post">
+            <div class="user_id">
+                <label for="statictext" class="col-sm-2 col-form-label">Username</label>
+                <input type="text" class="form-control" id="statictext" name="user_name" placeholder="Provide a username." aria-describedby="user_help">
+            </div>
+            <div id="user_help" class="form-text">Username should contain @.
+            </div>
+            <div class="user_pass">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Provide a password." aria-describedby="pass_help">
+            </div>
+            <div id="pass_help" class="form-text">Your password must be 8-20 characters long.
+            </div>
+            <div class="col-auto" id="submit_button">
+                <button type="submit" class="btn btn-success mb-3">Register</button>
+            </form><br>
+                Already have an account? Login <a href="/">here</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
